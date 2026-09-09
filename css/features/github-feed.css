@@ -1,0 +1,99 @@
+/* Live GitHub activity feed. */
+/* ============================================================
+GITHUB FEED
+============================================================ */
+.github-feed {
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: var(--r);
+padding: 24px;
+min-height: 120px;
+}
+.github-feed .event {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 12px 0;
+border-bottom: 1px solid var(--border);
+}
+.github-feed .event:last-child {
+border-bottom: none;
+}
+.github-feed .event-icon {
+font-size: 20px;
+width: 36px;
+text-align: center;
+flex: none;
+}
+.github-feed .event-content {
+flex: 1;
+}
+.github-feed .event-content .repo {
+font-weight: 600;
+color: var(--accent);
+}
+.github-feed .event-content .action {
+color: var(--muted);
+font-size: 14px;
+}
+.github-feed .event-content .time {
+font-family: var(--mono);
+font-size: 11px;
+color: var(--faint);
+display: block;
+margin-top: 2px;
+}
+.github-loading {
+display: flex;
+align-items: center;
+gap: 16px;
+justify-content: center;
+padding: 30px 0;
+color: var(--muted);
+font-family: var(--mono);
+font-size: 13px;
+}
+.loader-dot-small {
+width: 12px;
+height: 12px;
+border: 2px solid var(--border);
+border-top-color: var(--accent);
+border-radius: 50%;
+animation: spin 0.8s linear infinite;
+display: inline-block;
+}
+@keyframes spin {
+to { transform: rotate(360deg); }
+}
+.github-stats {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 14px;
+margin-top: 18px;
+}
+.github-stat {
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 16px 20px;
+text-align: center;
+}
+.github-stat .number {
+font-size: 24px;
+font-weight: 700;
+color: var(--accent);
+font-variant-numeric: tabular-nums;
+}
+.github-stat .label {
+display: block;
+font-size: 11px;
+font-family: var(--mono);
+color: var(--faint);
+margin-top: 4px;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+html[data-theme="light"] .github-feed,
+html[data-theme="light"] .github-stat {
+background: #FFFFFF;
+}

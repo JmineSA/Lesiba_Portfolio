@@ -1,0 +1,122 @@
+/* Background music player. */
+/* ============================================================
+MUSIC PLAYER
+============================================================ */
+.music-player {
+position: fixed;
+bottom: 30px;
+left: 30px;
+z-index: 9999;
+display: flex;
+align-items: center;
+gap: 12px;
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: 99px;
+padding: 6px 16px 6px 6px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+transition: all 0.3s ease;
+backdrop-filter: blur(10px);
+}
+.music-player:hover {
+border-color: var(--accent);
+box-shadow: 0 4px 30px rgba(201, 246, 90, 0.15);
+}
+.music-toggle {
+display: flex;
+align-items: center;
+gap: 8px;
+background: none;
+border: none;
+color: var(--text);
+cursor: pointer;
+padding: 6px 10px 6px 6px;
+border-radius: 99px;
+transition: all 0.3s ease;
+font-family: var(--mono);
+font-size: 11px;
+letter-spacing: 0.06em;
+}
+.music-toggle:hover {
+color: var(--accent);
+}
+.music-toggle .music-icon {
+width: 20px;
+height: 20px;
+transition: all 0.3s ease;
+}
+.music-toggle .music-label {
+font-weight: 500;
+}
+.music-toggle.playing .music-icon {
+animation: spin 3s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+.music-controls {
+display: flex;
+align-items: center;
+gap: 8px;
+opacity: 0;
+max-width: 0;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+.music-player:hover .music-controls {
+opacity: 1;
+max-width: 120px;
+}
+.music-controls input[type="range"] {
+width: 80px;
+height: 3px;
+-webkit-appearance: none;
+appearance: none;
+background: var(--border);
+border-radius: 99px;
+outline: none;
+transition: background 0.3s;
+}
+.music-controls input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: var(--accent);
+cursor: pointer;
+border: 2px solid var(--bg);
+box-shadow: 0 0 10px rgba(201, 246, 90, 0.3);
+}
+.music-controls input[type="range"]::-moz-range-thumb {
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: var(--accent);
+cursor: pointer;
+border: 2px solid var(--bg);
+}
+.music-volume-label {
+font-size: 14px;
+opacity: 0.6;
+}
+.music-player .now-playing {
+font-family: var(--mono);
+font-size: 9px;
+color: var(--faint);
+letter-spacing: 0.08em;
+text-transform: uppercase;
+opacity: 0;
+max-width: 0;
+overflow: hidden;
+transition: all 0.3s ease;
+white-space: nowrap;
+}
+.music-player:hover .now-playing {
+opacity: 1;
+max-width: 100px;
+}
+html[data-theme="light"] .music-player {
+background: rgba(255,255,255,0.9);
+}

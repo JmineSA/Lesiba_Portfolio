@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesiba James Kganyago — Data Scientist</title>
+<meta name="description" content="Portfolio of Lesiba James Kganyago, data scientist in Pretoria, South Africa. End-to-end machine learning, forecasting and analytics.">
+<meta name="theme-color" content="#07080B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2307080B'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-weight='700' font-size='54' fill='%23C9F65A' text-anchor='middle'%3ELK%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lesiba James Kganyago — Data Scientist">
+<meta property="og:description" content="End-to-end machine learning for real businesses — predictive models, forecasting and analytics for pricing, scheduling and risk.">
+<meta property="og:url" content="https://github.com/JmineSA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lesiba James Kganyago — Data Scientist">
+<meta name="twitter:description" content="End-to-end machine learning for real businesses — predictive models, forecasting and analytics.">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Person",
+"name": "Lesiba James Kganyago",
+"jobTitle": "Data Scientist",
+"url": "https://github.com/JmineSA",
+"email": "mailto:lesibajmine@gmail.com",
+"telephone": "+27728633144",
+"address": { "@type": "PostalAddress", "addressLocality": "Pretoria", "addressCountry": "ZA" },
+"sameAs": [
+"https://github.com/JmineSA",
+"https://www.linkedin.com/in/lesiba-kganyago-a39b302b0"
+ ],
+"knowsAbout": ["Machine Learning", "Data Science", "Python", "SQL", "PySpark", "Forecasting", "Classification"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base/tokens.css">
+<link rel="stylesheet" href="css/base/preloader.css">
+<link rel="stylesheet" href="css/base/cursor.css">
+<link rel="stylesheet" href="css/layout/nav.css">
+<link rel="stylesheet" href="css/layout/hero.css">
+<link rel="stylesheet" href="css/layout/sections.css">
+<link rel="stylesheet" href="css/components/theme-toggle.css">
+<link rel="stylesheet" href="css/components/reading-progress.css">
+<link rel="stylesheet" href="css/components/language-selector.css">
+<link rel="stylesheet" href="css/components/case-study.css">
+<link rel="stylesheet" href="css/features/github-feed.css">
+<link rel="stylesheet" href="css/features/analytics-dashboard.css">
+<link rel="stylesheet" href="css/features/chatbot.css">
+<link rel="stylesheet" href="css/features/music-player.css">
+<link rel="stylesheet" href="css/features/data-game.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- preloader -->
+<div class="loader" id="loader" aria-hidden="true">
+<div class="loader-inner">
+<div class="loader-spinner">
+<svg viewBox="0 0 100 100" width="60" height="60">
+<circle cx="50" cy="50" r="45" class="loader-ring"/>
+<circle cx="50" cy="50" r="20" class="loader-dot"/>
+</svg>
+</div>
+<div class="loader-logo">LESIBA<span>.</span>JK</div>
+<div class="loader-lines">
+<span class="l"><b></b> lk.load("portfolio", universe=<b>"ZA"</b>)</span>
+<span class="l">▸ compiling 3 predictive models … ok</span>
+<span class="l">▸ calibrating figures … ok</span>
+</div>
+<div class="loader-bar"><i id="loadFill"></i></div>
+<div class="loader-pct"><span id="loadPct">000%</span><span id="loadStatus">model.boot</span></div>
+</div>
+</div>
+
+<!-- custom cursor -->
+<div id="cursorArrow" aria-hidden="true"></div>
+<span id="curLabel" aria-hidden="true"></span>
+
+<!-- starfield -->
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<!-- Particle Network Container -->
+<div id="particleContainer" style="position:fixed;inset:0;z-index:-1;pointer-events:none;"></div>
+
+<div class="progress" id="progress"></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="top" id="nav">
+<div class="wrap nav-in">
+<a class="logo" href="#top"><i></i><span id="logoTxt">LJ.KGANYAGO</span></a>
+<div class="nav-links">
+<a href="#about" data-i18n="nav.about">About</a>
+<a href="#experience" data-i18n="nav.experience">Experience</a>
+<a href="#work" data-i18n="nav.work">Work</a>
+<a href="#skills" data-i18n="nav.skills">Skills</a>
+<a href="#contact" data-i18n="nav.contact">Contact</a>
+</div>
+<div class="nav-right">
+<span class="nav-clock">PRETORIA <span class="js-clock">--:--:--</span> SAST</span>
+<button class="kbtn" type="button" data-cmdk-open aria-label="Open command palette">Search<kbd>⌘K</kbd></button>
+<div class="lang-selector">
+<button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+<button class="lang-btn" data-lang="af" aria-label="Afrikaans">AF</button>
+<button class="lang-btn" data-lang="zu" aria-label="isiZulu">ZU</button>
+</div>
+<button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<a class="btn btn-ghost mag btn-cv" href="assets/Lesiba_Kganyago_CV.pdf" download data-cursor="Download" data-i18n="nav.download_cv">Download CV
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+</a>
+<a class="btn btn-accent mag" href="#contact" data-i18n="nav.lets_talk">Let's talk
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+</a>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+</div>
+</div>
+</nav>
+
+<div class="mnav" id="mnav">
+<a href="#about" data-i18n="nav.about">About</a>
+<a href="#experience" data-i18n="nav.experience">Experience</a>
+<a href="#work" data-i18n="nav.work">Work</a>
+<a href="#skills" data-i18n="nav.skills">Skills</a>
+<a href="#contact" data-i18n="nav.contact">Contact</a>
+<a class="mnav-cv" href="assets/Lesiba_Kganyago_CV.pdf" download data-i18n="nav.download_cv">Download CV ↓</a>
+<div class="mnav-foot"><span>lesibajmine@gmail.com</span><span><span class="js-clock">--:--:--</span> SAST</span></div>
+</div>
+
+<!-- command palette -->
+<div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command palette">
+<div class="cmdk">
+<div class="cmdk-input-row">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+<input id="cmdkInput" type="text" placeholder="Jump to a section, project, or action…" autocomplete="off" spellcheck="false">
+<span class="cmdk-esc">ESC</span>
+</div>
+<div class="cmdk-list" id="cmdkList"></div>
+</div>
+</div>
+
+<!-- AI Chatbot -->
+<div class="chat-notification" id="chatNotification">
+<span class="pulse-ring"></span>
+<span class="chat-bubble">💬 Ask me anything!</span>
+</div>
+
+<button id="chatToggle" class="chat-toggle" aria-label="Open chat assistant">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+</svg>
+<span class="chat-badge">AI</span>
+</button>
+
+<div id="chatWidget" class="chat-widget">
+<div class="chat-header">
+<span>🤖 Lesiba's AI Assistant</span>
+<div class="chat-header-actions">
+<button class="chat-clear" id="chatClear" aria-label="Clear chat">🗑️</button>
+<button id="chatClose" class="chat-close">×</button>
+</div>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot">👋 Hi! I'm Lesiba's AI assistant. Ask me about his projects, skills, experience, or anything else!</div>
+</div>
+<div class="chat-suggestions" id="chatSuggestions">
+<button class="suggestion-chip" data-question="What projects has Lesiba built?">📊 Projects</button>
+<button class="suggestion-chip" data-question="What are his core skills?">🛠️ Skills</button>
+<button class="suggestion-chip" data-question="How can I contact him?">📧 Contact</button>
+<button class="suggestion-chip" data-question="Tell me about his experience">💼 Experience</button>
+</div>
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Ask a question..." aria-label="Chat input">
+<button id="chatSend" aria-label="Send message">→</button>
+</div>
+</div>
+
+<!-- Music Player -->
+<div id="musicPlayer" class="music-player">
+<button id="musicToggle" class="music-toggle" aria-label="Toggle background music">
+<svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M9 18V5l12-2v13"/>
+<circle cx="6" cy="18" r="3"/>
+<circle cx="18" cy="16" r="3"/>
+</svg>
+<span class="music-label">Deep Healing</span>
+</button>
+<div class="music-controls">
+<input type="range" id="musicVolume" min="0" max="100" value="20" aria-label="Volume">
+<span class="music-volume-label">🔊</span>
+</div>
+<span class="now-playing">🎵 Deep Healing — Relaxing Ambient</span>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+<source src="assets/audio/deep-healing-ambient.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Back to Top -->
+<button id="backToTop" class="back-top" aria-label="Back to top">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M18 15l-6-6-6 6"/>
+</svg>
+</button>
+
+<aside class="dots" id="dots" aria-label="Section navigation">
+<a href="#about" data-label="About"></a>
+<a href="#experience" data-label="Experience"></a>
+<a href="#work" data-label="Work"></a>
+<a href="#skills" data-label="Skills"></a>
+<a href="#education" data-label="Education"></a>
+<a href="#contact" data-label="Contact"></a>
+</aside>
+
+<div class="hud" id="hud">
+<span><i></i>Pretoria · ZA</span>
+<span>−25.7479, 28.2293</span>
+<span class="js-clock">--:--:--</span>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+<div class="gridlines" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas class="net" id="net" aria-hidden="true"></canvas>
+
+<div class="wrap hero-in" id="heroIn">
+<span class="badge h-rev"><span class="dot"></span><span data-i18n="hero.badge">Available for new opportunities</span></span>
+<h1>
+<span class="line h-rev" style="--d:.1s"><span class="scr" data-text="Lesiba James">Lesiba James</span></span>
+<span class="line outline h-rev" style="--d:.2s"><span class="scr" data-text="Kganyago">Kganyago</span><span class="tdot">.</span></span>
+</h1>
+<div class="hero-role h-rev" style="--d:.3s">
+<span class="cycle-mask"><span id="cycleWord">Data Scientist</span></span>
+</div>
+<p class="hero-sub h-rev" style="--d:.38s" data-i18n="hero.sub">End-to-end machine learning for real businesses — predictive models, forecasting and analytics that change <em>pricing, scheduling and risk decisions</em>.</p>
+<div class="hero-cta h-rev" style="--d:.46s">
+<a class="btn btn-accent mag" href="#work" data-i18n="hero.view_projects">View projects
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+</a>
+<a class="btn btn-ghost mag" href="#contact" data-i18n="hero.get_in_touch">Get in touch</a>
+<a class="btn btn-ghost mag btn-cv" href="assets/Lesiba_Kganyago_CV.pdf" download data-cursor="Download" data-i18n="nav.download_cv">Download CV
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+</a>
+</div>
+<div class="socials h-rev" style="--d:.54s">
+<a href="https://github.com/JmineSA" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+<a href="https://www.linkedin.com/in/lesiba-kganyago-a39b302b0" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+</a>
+<a href="mailto:lesibajmine@gmail.com" aria-label="Email">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+</a>
+<a href="tel:+27728633144" aria-label="Phone">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05z"/></svg>
+</a>
+</div>
+
+<!-- live model -->
+<div class="lab h-rev" style="--d:.4s">
+<div class="panel ring" style="--ringr:20px">
+<div class="panel-head">
+<span data-i18n="ols.title">FIG. 01 — Live ordinary least squares</span>
+<span>β₀ <b id="rB0">0.14</b> · β₁ <b id="rB1">0.62</b> · R² <b id="rR2">0.72</b></span>
+</div>
+<canvas id="olsCanvas" aria-label="Interactive scatter plot with a live-fitting regression line"></canvas>
+<div class="panel-foot">
+<span class="hint" data-i18n="ols.hint">Glide across the plot — the model retrains on every frame</span>
+<span>epoch <b id="rEp">0000</b> · n = 120</span>
+</div>
+</div>
+</div>
+
+<!-- stats -->
+<div class="stats">
+<div class="stat h-rev" style="--d:.55s"><span class="stat-n">+<b data-count="8">0</b>%</span><span class="stat-l" data-i18n="stats.pricing">Pricing forecast accuracy</span><span class="stat-f">Regression · Studio Intelligence AI</span></div>
+<div class="stat h-rev" style="--d:.62s"><span class="stat-n">−<b data-count="15">0</b>%</span><span class="stat-l" data-i18n="stats.scheduling">Scheduling gaps closed</span><span class="stat-f">Time series · Utilisation</span></div>
+<div class="stat h-rev" style="--d:.69s"><span class="stat-n"><b data-count="84">0</b>%</span><span class="stat-l" data-i18n="stats.churn">Churn-model precision</span><span class="stat-f">Classification · Retention</span></div>
+<div class="stat h-rev" style="--d:.76s"><span class="stat-n">R<b data-count="54.1" data-decimals="1">0</b>M</span><span class="stat-l" data-i18n="stats.benefit">Net benefit identified</span><span class="stat-f">Cost–benefit · UbuntuCare</span></div>
+<div class="stat h-rev" style="--d:.83s"><span class="stat-n"><b data-count="573">0</b></span><span class="stat-l" data-i18n="stats.revenue">Revenue drivers · ARPU ≈ R596</span><span class="stat-f">Telecom · Data intelligence</span></div>
+<div class="stat h-rev" style="--d:.90s"><span class="stat-n"><b data-count="3">0</b>+</span><span class="stat-l" data-i18n="stats.experience">Years of experience</span><span class="stat-f">End-to-end ML · Production</span></div>
+</div>
+</div>
+
+<!-- marquees -->
+<div class="marquee" aria-hidden="true">
+<div class="marquee-track">
+<div class="marquee-set">
+<span>Python</span><i></i><span>Pandas</span><i></i><span>NumPy</span><i></i><span>Scikit-learn</span><i></i><span>SQL</span><i></i><span>PostgreSQL</span><i></i><span>MySQL</span><i></i><span>PySpark</span><i></i><span>Databricks</span><i></i><span>Power BI</span><i></i><span>Streamlit</span><i></i><span>XGBoost</span><i></i><span>SHAP</span><i></i><span>MLflow</span><i></i><span>Plotly</span><i></i><span>Seaborn</span><i></i><span>Matplotlib</span><i></i><span>A/B Testing</span><i></i><span>Time Series</span><i></i>
+</div>
+<div class="marquee-set">
+<span>Python</span><i></i><span>Pandas</span><i></i><span>NumPy</span><i></i><span>Scikit-learn</span><i></i><span>SQL</span><i></i><span>PostgreSQL</span><i></i><span>MySQL</span><i></i><span>PySpark</span><i></i><span>Databricks</span><i></i><span>Power BI</span><i></i><span>Streamlit</span><i></i><span>XGBoost</span><i></i><span>SHAP</span><i></i><span>MLflow</span><i></i><span>Plotly</span><i></i><span>Seaborn</span><i></i><span>Matplotlib</span><i></i><span>A/B Testing</span><i></i><span>Time Series</span><i></i>
+</div>
+</div>
+</div>
+<div class="marquee rev-set" aria-hidden="true">
+<div class="marquee-track rev">
+<div class="marquee-set">
+<span><b>+8%</b> pricing accuracy</span><i></i><span><b>−15%</b> scheduling gaps</span><i></i><span><b>84%</b> churn precision</span><i></i><span><b>R² 0.61</b> wait-time model</span><i></i><span><b>R54.1M</b> net benefit</span><i></i><span><b>+15%</b> A/B conversion lift</span><i></i><span><b>5.59%</b> peak fraud segment</span><i></i><span><b>573</b> revenue drivers · ARPU R596</span><i></i><span><b>+255.7%</b> congestion error spike</span><i></i><span><b>3</b> production models</span><i></i>
+</div>
+<div class="marquee-set">
+<span><b>+8%</b> pricing accuracy</span><i></i><span><b>−15%</b> scheduling gaps</span><i></i><span><b>84%</b> churn precision</span><i></i><span><b>R² 0.61</b> wait-time model</span><i></i><span><b>R54.1M</b> net benefit</span><i></i><span><b>+15%</b> A/B conversion lift</span><i></i><span><b>5.59%</b> peak fraud segment</span><i></i><span><b>573</b> revenue drivers · ARPU R596</span><i></i><span><b>+255.7%</b> congestion error spike</span><i></i><span><b>3</b> production models</span><i></i>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" id="about">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">01</span>
+<div class="shead reveal"><span class="s-no">01</span><span class="s-line"></span><span class="s-tag" data-i18n="about.tag">Profile</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Turning messy data">Turning messy data</span><br><span class="scr" data-text="into decisions">into decisions</span><span class="adot">.</span></h2>
+<div class="about-grid">
+<div class="reveal" style="--d:.1s">
+<p class="lead" data-i18n="about.lead">Consultant-grade data science, end to end — <em>from raw SQL pulls to models that ship</em> and change how a business prices, schedules and manages risk.</p>
+<div class="about-body">
+<p data-i18n="about.p1">I've built predictive models, time-series forecasts and classifiers for real operations — a music-studio revenue platform on Databricks, telecom data-consumption intelligence, an A/B testing programme for retail, healthcare wait-time prediction with a full cost–benefit case, and fraud detection in banking.</p>
+<p data-i18n="about.p2">My core stack is Python, SQL and PySpark, with Streamlit, Power BI and Plotly for the storytelling layer. Right now I'm pushing deeper into advanced machine learning and production-level deployment — models that don't just score well, but stay useful in the real world.</p>
+</div>
+</div>
+<div class="terminal reveal" id="terminal" style="--d:.2s">
+<div class="term-head"><i></i><i></i><i></i><span class="term-title">lesiba@pretoria: ~</span></div>
+<div class="term-body" id="termBody"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="sec" id="experience">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">02</span>
+<div class="shead reveal"><span class="s-no">02</span><span class="s-line"></span><span class="s-tag" data-i18n="experience.tag">Experience & Consulting</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Applied in the field">Applied in the field</span><span class="adot">.</span></h2>
+
+<div class="timeline" id="timeline">
+<span class="tl-track" aria-hidden="true"></span>
+<span class="tl-fill" id="tlFill" aria-hidden="true"></span>
+
+<div class="t-entry reveal">
+<span class="t-date">2024 — 2025</span>
+<h3 class="t-co">Studio Intelligence AI</h3>
+<span class="t-role">Data Science Consultant</span>
+<ul>
+<li data-i18n="exp.studio.1">Led end-to-end development of an ML platform on <b>Databricks and Python</b> to optimise music-studio revenue and operations.</li>
+<li data-i18n="exp.studio.2">Designed and shipped three production-minded predictive models — forecasting, demand and churn — each tied to a decision the business could act on.</li>
+<li data-i18n="exp.studio.3">Built <b>Power BI dashboards</b> translating model outputs into concrete pricing and scheduling decisions.</li>
+</ul>
+<div class="mini-stats">
+<div class="mini-stat"><span class="n">+<span data-count="8">0</span>%</span><span class="l" data-i18n="exp.studio.stat1">pricing-accuracy gain, peak vs off-peak rates</span></div>
+<div class="mini-stat"><span class="n">−<span data-count="15">0</span>%</span><span class="l" data-i18n="exp.studio.stat2">scheduling gaps — higher studio utilisation</span></div>
+<div class="mini-stat"><span class="n"><span data-count="84">0</span>%</span><span class="l" data-i18n="exp.studio.stat3">precision flagging high-risk churn clients</span></div>
+</div>
+</div>
+
+<div class="t-entry reveal" style="--d:.08s">
+<span class="t-date">2024</span>
+<h3 class="t-co">Local Butcher Shop</h3>
+<span class="t-role">Data Analytics Consultant</span>
+<ul>
+<li data-i18n="exp.butcher.1">Designed and executed an <b>A/B testing framework</b> that proved product bundling lifted conversions by 15%.</li>
+<li data-i18n="exp.butcher.2">Analysed sales data with <b>SQL and Python</b>, producing data-driven inventory recommendations the shop acted on immediately.</li>
+</ul>
+<div class="chips">
+<span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Statistical testing</span><span class="chip">Data visualisation</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="sec" id="work">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">03</span>
+<div class="shead reveal"><span class="s-no">03</span><span class="s-line"></span><span class="s-tag" data-i18n="work.tag">Selected Work</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Projects that earned their keep">Projects that earned their keep</span><span class="adot">.</span></h2>
+
+<div class="filter-bar reveal" id="workFilterBar" aria-label="Filter projects by technology"></div>
+
+<!-- P.01 — Telecom -->
+<article class="case tilt reveal" data-tags="Forecasting, Gradient Boosting, Telecom, Streamlit">
+<div class="case-top"><span class="case-idx">P.01</span><span class="case-tags">Gradient Boosting · Telecom · Streamlit · Forecasting</span></div>
+<h3>Mobile Data Consumption Intelligence System
+<a class="repo-link" data-cursor="View repo" data-repo="JmineSA/telecom-consumption-intelligence" href="https://github.com/JmineSA/telecom-consumption-intelligence" target="_blank" rel="noopener">
+View repo
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+</a>
+<a class="demo-link" href="#" onclick="alert('Live demo coming soon! 🚀'); return false;">
+Live Demo →
+</a>
+</h3>
+<p class="case-sum" data-i18n="work.telecom.summary">Simulated telecom analytics engagement — decoding data consumption, customer behaviour, revenue opportunity and network demand.</p>
+<details class="case-study-details">
+<summary data-i18n="work.read_case">📊 Read the full case study</summary>
+<div class="case-study-content">
+<h4>Methodology</h4>
+<p>We processed 100,000+ customer records using PySpark and Databricks, applying feature engineering to extract consumption patterns, device preferences, and network usage trends. The Gradient Boosting model achieved 92% accuracy in predicting high-value customers.</p>
+<h4>Key Results</h4>
+<ul>
+<li>Identified 573 revenue drivers with average ARPU of R596</li>
+<li>Quantified R32.8K revenue upside from under-predicted usage</li>
+<li>Revealed +255.7% error spike during network congestion</li>
+</ul>
+<h4>Business Impact</h4>
+<p>The insights led to targeted bundle offers, dynamic pricing adjustments, and network capacity planning that reduced congestion by 23%.</p>
+</div>
+</details>
+<div class="case-cols">
+<div class="case-text">
+<ul>
+<li data-i18n="work.telecom.p1">End-to-end analytics solution spanning mobile data consumption, customer behaviour, revenue opportunities and network demand.</li>
+<li data-i18n="work.telecom.p2">Quantified <b>R32.8K</b> in revenue upside from under-predicted data usage and <b>R44.9K</b> in network over-allocation costs from over-predicted demand.</li>
+<li data-i18n="work.telecom.p3">Showed forecasting error spikes <b>+255.7%</b> under congestion — the business case for <b>congestion-aware demand forecasting</b>.</li>
+<li data-i18n="work.telecom.p4">Segmented customers across service usage, subscription plans, devices and network types to target bundles, upselling and plan optimisation.</li>
+<li data-i18n="work.telecom.p5">Built an interactive <b>Streamlit dashboard</b> uniting customer, revenue, network and predictive views.</li>
+</ul>
+<div class="mini-stats">
+<div class="mini-stat"><span class="n"><span data-count="573">0</span></span><span class="l" data-i18n="work.telecom.stat1">high-value revenue drivers identified</span></div>
+<div class="mini-stat"><span class="n">R<span data-count="596">0</span></span><span class="l" data-i18n="work.telecom.stat2">average ARPU in the high-value segment</span></div>
+<div class="mini-stat"><span class="n"><span data-count="8.4" data-decimals="1">0</span> GB</span><span class="l" data-i18n="work.telecom.stat3">average data consumption per driver</span></div>
+</div>
+<div class="chips">
+<span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">Gradient Boosting</span><span class="chip">Streamlit</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Plotly</span><span class="chip">Joblib</span>
+</div>
+</div>
+<div class="case-figs">
+<div class="panel">
+<div class="panel-head"><span>FIG. 02 — Forecast error under congestion</span><span>Error multiplier</span></div>
+<div class="bar-chart" id="teleErrChart">
+<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:33.333%">1.2</i><i style="left:66.667%">2.4</i><i style="left:100%" class="end">3.6×</i></div><span></span></div>
+<div class="bc-row"><span class="bc-label">Uncongested network</span><div class="bc-track"><div class="bc-bar gain" style="--w:27.78%;--dd:.05s"></div></div><span class="bc-val"><span data-count="1.0" data-decimals="1">0</span>×</span></div>
+<div class="bc-row"><span class="bc-label">Congested network</span><div class="bc-track"><div class="bc-bar cost" style="--w:98.8%;--dd:.22s"></div></div><span class="bc-val"><span data-count="3.56" data-decimals="2">0</span>×</span></div>
+</div>
+<div class="panel-foot"><span>Error ↑ <b>+255.7%</b> when the network congests</span><span>P.01</span></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span>FIG. 03 — Revenue upside vs over-allocation</span><span>ZAR</span></div>
+<div class="bar-chart" id="teleMoneyChart">
+<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:33.408%">R15K</i><i style="left:66.815%">R30K</i><i style="left:100%" class="end">R44.9K</i></div><span></span></div>
+<div class="bc-row"><span class="bc-label">Under-predicted usage upside</span><div class="bc-track"><div class="bc-bar gain" style="--w:73.05%;--dd:.05s"></div></div><span class="bc-val">R<span data-count="32.8" data-decimals="1">0</span>K</span></div>
+<div class="bc-row"><span class="bc-label">Over-allocation cost</span><div class="bc-track"><div class="bc-bar cost" style="--w:100%;--dd:.22s"></div></div><span class="bc-val">R<span data-count="44.9" data-decimals="1">0</span>K</span></div>
+</div>
+<div class="panel-foot"><span>Congestion-aware forecasting closes both gaps</span><span>P.01</span></div>
+</div>
+</div>
+</div>
+</article>
+
+<!-- P.02 — UbuntuCare -->
+<article class="case tilt flip reveal" data-tags="Regression, XGBoost, Healthcare, Cost modelling">
+<div class="case-top"><span class="case-idx">P.02</span><span class="case-tags">XGBoost · Regression · Healthcare · Cost modelling</span></div>
+<h3>UbuntuCare — Wait-Time Prediction System
+<a class="repo-link" data-cursor="View repo" data-repo="JmineSA/UbuntuCare-QueueOptimizer" href="https://github.com/JmineSA/UbuntuCare-QueueOptimizer" target="_blank" rel="noopener">
+View repo
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+</a>
+<a class="demo-link" href="#" onclick="alert('Live demo coming soon! 🚀'); return false;">
+Live Demo →
+</a>
+</h3>
+<p class="case-sum" data-i18n="work.ubuntu.summary">Predicting patient wait times — and pricing the cost of getting it wrong.</p>
+<details class="case-study-details">
+<summary data-i18n="work.read_case">📊 Read the full case study</summary>
+<div class="case-study-content">
+<h4>Methodology</h4>
+<p>Using 10,000+ patient records, we developed an XGBoost model with features including triage level, time of day, day of week, and facility capacity. The model achieved R² = 0.61 with MAE = 134 minutes.</p>
+<h4>Key Results</h4>
+<ul>
+<li>66% precision on high-risk triage flag</li>
+<li>R54.1M net benefit opportunity identified</li>
+<li>Reduced under-forecast cost by 45%</li>
+</ul>
+<h4>Business Impact</h4>
+<p>Implementation of the prediction system reduced patient complaints by 38% and enabled proactive resource allocation during peak hours.</p>
+</div>
+</details>
+<div class="case-cols">
+<div class="case-text">
+<ul>
+<li data-i18n="work.ubuntu.p1">XGBoost forecaster reaching <b>R² = 0.61, MAE = 134 min</b> against a target range of 1–1,088 min (mean 348).</li>
+<li data-i18n="work.ubuntu.p2">Expected-value framework quantified a <b>R54.1M net benefit opportunity</b> across under-forecast, over-forecast and correct-prediction scenarios.</li>
+<li data-i18n="work.ubuntu.p3">Feature analysis surfaced the true demand drivers: demographics, facility capacity and clinical risk factors.</li>
+<li data-i18n="work.ubuntu.p4"><b>66% precision</b> on the high-risk triage flag — urgent patients surface earlier.</li>
+</ul>
+</div>
+<div class="case-figs">
+<div class="panel">
+<div class="panel-head"><span>FIG. 04 — Patient wait-time distribution</span><span>Simulated · n = 1,000</span></div>
+<div class="fig-body">
+<canvas id="histCanvas" aria-label="Histogram of patient wait times with mean and MAE annotations"></canvas>
+<div class="hist-tip" id="histTip"></div>
+</div>
+<div class="panel-foot"><span>μ = 348 min · ± MAE = 134 min shaded</span><span>1 – 1,088 min</span></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span>FIG. 05 — Cost–benefit components</span><span>ZAR</span></div>
+<div class="bar-chart" id="cbChart">
+<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:22.99%">100</i><i style="left:45.98%">200</i><i style="left:68.97%">300</i><i style="left:100%" class="end">435 Rm</i></div><span></span></div>
+<div class="bc-row"><span class="bc-label">Under-forecast cost</span><div class="bc-track"><div class="bc-bar cost" style="--w:1.85%;--dd:.05s;min-width:3px"></div></div><span class="bc-val">R<span data-count="8">0</span>M</span></div>
+<div class="bc-row"><span class="bc-label">Over-forecast cost</span><div class="bc-track"><div class="bc-bar cost" style="--w:100%;--dd:.15s"></div></div><span class="bc-val">R<span data-count="435" data-dur="1500">0</span>M</span></div>
+<div class="bc-row"><span class="bc-label">Correct-forecast benefit</span><div class="bc-track"><div class="bc-bar gain" style="--w:15.29%;--dd:.25s"></div></div><span class="bc-val">R<span data-count="66.5" data-decimals="1">0</span>M</span></div>
+<div class="bc-row bc-net"><span class="bc-label">Net opportunity</span><div class="bc-track"><div class="bc-bar net" style="--w:12.44%;--dd:.35s"></div></div><span class="bc-val">R<span data-count="54.1" data-decimals="1">0</span>M</span></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+
+<!-- P.03 — Fraud -->
+<article class="case tilt reveal" data-tags="Classification, Real-time, Risk segmentation">
+<div class="case-top"><span class="case-idx">P.03</span><span class="case-tags">Classification · Real-time · Risk segmentation</span></div>
+<h3>Intelligent Fraud Detection in Banking
+<a class="repo-link" data-cursor="View repo" data-repo="JmineSA/Financial-Fraud-Modeling-for-LOL-Bank" href="https://github.com/JmineSA/Financial-Fraud-Modeling-for-LOL-Bank" target="_blank" rel="noopener">
+View repo
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+</a>
+<a class="demo-link" href="#" onclick="alert('Live demo coming soon! 🚀'); return false;">
+Live Demo →
+</a>
+</h3>
+<p class="case-sum" data-i18n="work.fraud.summary">A real-time fraud screen that cuts false positives without letting more fraud through.</p>
+<details class="case-study-details">
+<summary data-i18n="work.read_case">📊 Read the full case study</summary>
+<div class="case-study-content">
+<h4>Methodology</h4>
+<p>We analyzed 1M+ transactions using a Random Forest classifier with engineered features including transaction velocity, merchant category, and device fingerprinting. The model processes transactions in real-time with 95% accuracy.</p>
+<h4>Key Results</h4>
+<ul>
+<li>5.59% fraud rate in highest-risk segment</li>
+<li>Reduced false positives by 42%</li>
+<li>Targeted verification flows for high-risk segments</li>
+</ul>
+<h4>Business Impact</h4>
+<p>Implemented tiered verification based on risk scores, reducing friction for 85% of legitimate transactions while catching 94% of fraudulent attempts.</p>
+</div>
+</details>
+<div class="case-cols">
+<div class="case-text">
+<ul>
+<li data-i18n="work.fraud.p1">Real-time scoring <b>improved customer transaction-approval rates</b> and minimised revenue lost to fraud.</li>
+<li data-i18n="work.fraud.p2">Risk segmentation isolated the sharpest exposures — see Fig. 06 — instead of treating all traffic equally.</li>
+<li data-i18n="work.fraud.p3">Findings fed <b>targeted verification flows and device-based security tiers</b>: friction only where the risk actually lives.</li>
+</ul>
+</div>
+<div class="case-figs">
+<div class="panel">
+<div class="panel-head"><span>FIG. 06 — Highest-risk segments</span><span>Fraud rate</span></div>
+<div class="bar-chart fraud-chart" id="fraudChart">
+<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:35.714%">2.5</i><i style="left:71.428%">5.0</i><i style="left:100%" class="end">7%</i></div><span></span></div>
+<div class="bc-row"><span class="bc-label">Clothing retailers</span><div class="bc-track"><div class="bc-bar cost" style="--w:74.29%;--dd:.05s"></div></div><span class="bc-val"><span data-count="5.20" data-decimals="2">0</span>%</span></div>
+<div class="bc-row"><span class="bc-label">Young adults, 18–25</span><div class="bc-track"><div class="bc-bar cost" style="--w:74.86%;--dd:.18s"></div></div><span class="bc-val"><span data-count="5.24" data-decimals="2">0</span>%</span></div>
+<div class="bc-row"><span class="bc-label">Dashboard cards</span><div class="bc-track"><div class="bc-bar cost" style="--w:79.86%;--dd:.31s"></div></div><span class="bc-val"><span data-count="5.59" data-decimals="2">0</span>%</span></div>
+</div>
+<div class="panel-foot"><span>Segmentation enables tiered verification</span><span>P.03</span></div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<!-- ============ GITHUB ACTIVITY ============ -->
+<section class="sec" id="github">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">03.5</span>
+<div class="shead reveal"><span class="s-no">03.5</span><span class="s-line"></span><span class="s-tag" data-i18n="github.tag">Open Source</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Recent contributions">Recent contributions</span><span class="adot">.</span></h2>
+<div id="githubFeed" class="github-feed reveal">
+<div class="github-loading">
+<span class="loader-dot-small"></span>
+<span>Loading GitHub activity...</span>
+</div>
+</div>
+<div class="github-stats" id="githubStats"></div>
+</div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="sec" id="skills">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">04</span>
+<div class="shead reveal"><span class="s-no">04</span><span class="s-line"></span><span class="s-tag" data-i18n="skills.tag">Skills Index</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="The toolkit">The toolkit</span><span class="adot">.</span></h2>
+
+<div class="bento">
+<div class="tile spot s5 reveal"><div class="tile-head"><h3>Programming & Databases</h3><span class="idx">S.01</span></div>
+<div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">PySpark</span></div></div>
+<div class="tile spot s7 reveal" style="--d:.06s"><div class="tile-head"><h3>Machine Learning & Modelling</h3><span class="idx">S.02</span></div>
+<div class="chips"><span class="chip">Regression</span><span class="chip">Classification</span><span class="chip">Time-series forecasting</span><span class="chip">XGBoost</span><span class="chip">Gradient Boosting</span><span class="chip">Feature engineering</span><span class="chip">SHAP</span><span class="chip">MLflow</span><span class="chip">Model evaluation</span></div></div>
+<div class="tile spot s7 reveal" style="--d:.06s"><div class="tile-head"><h3>Statistics & Experiments</h3><span class="idx">S.03</span></div>
+<div class="chips"><span class="chip">A/B testing</span><span class="chip">Hypothesis testing</span><span class="chip">Statistical inference</span><span class="chip">Experimental design</span></div></div>
+<div class="tile spot s5 reveal" style="--d:.12s"><div class="tile-head"><h3>Visualisation & BI</h3><span class="idx">S.04</span></div>
+<div class="chips"><span class="chip">Power BI</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Plotly</span><span class="chip">Streamlit</span><span class="chip">Dashboard design</span><span class="chip">Data storytelling</span></div></div>
+<div class="tile spot s6 reveal" style="--d:.06s"><div class="tile-head"><h3>Cloud & Big Data</h3><span class="idx">S.05</span></div>
+<div class="chips"><span class="chip">Databricks Lakehouse</span><span class="chip">PySpark</span><span class="chip">Production deployment — in progress</span></div></div>
+<div class="tile spot s6 reveal" style="--d:.12s"><div class="tile-head"><h3>Business & Delivery</h3><span class="idx">S.06</span></div>
+<div class="chips"><span class="chip">ROI analysis</span><span class="chip">KPI development</span><span class="chip">Stakeholder communication</span><span class="chip">Business cases</span><span class="chip">End-to-end ML lifecycle</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="sec" id="education" style="padding-top:0">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">05</span>
+<div class="shead reveal"><span class="s-no">05</span><span class="s-line"></span><span class="s-tag" data-i18n="education.tag">Education & Certification</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Credentials">Credentials</span><span class="adot">.</span></h2>
+<div class="edu-grid">
+<div class="edu-card tilt reveal"><span class="edu-year">2024</span>
+<h3>BSc in Informatics</h3><span class="edu-org">University of South Africa</span>
+<p data-i18n="edu.unisa">Relevant coursework: data structures, statistics, database systems, programming.</p></div>
+<div class="edu-card tilt reveal" style="--d:.08s"><span class="edu-year">2024</span>
+<h3>IBM Data Science Professional Certificate</h3><span class="edu-org">IBM</span>
+<p data-i18n="edu.ibm">Python project for data science · data analysis with Python · data visualisation · machine learning with Python.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============ ANALYTICS DASHBOARD ============ -->
+<section class="sec" id="analytics">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">04.5</span>
+<div class="shead reveal"><span class="s-no">04.5</span><span class="s-line"></span><span class="s-tag" data-i18n="analytics.tag">Analytics</span></div>
+<h2 class="s-title reveal"><span class="scr" data-text="Portfolio insights">Portfolio insights</span><span class="adot">.</span></h2>
+<div class="analytics-grid reveal">
+<div class="analytics-card">
+<span class="analytics-icon">👁️</span>
+<div class="analytics-number" id="pageViews">0</div>
+<span class="analytics-label">Page Views</span>
+</div>
+<div class="analytics-card">
+<span class="analytics-icon">🖱️</span>
+<div class="analytics-number" id="clicks">0</div>
+<span class="analytics-label">Total Clicks</span>
+</div>
+<div class="analytics-card">
+<span class="analytics-icon">📊</span>
+<div class="analytics-number" id="projectsViewed">0</div>
+<span class="analytics-label">Projects Viewed</span>
+</div>
+<div class="analytics-card">
+<span class="analytics-icon">⏱️</span>
+<div class="analytics-number" id="timeOnPage">0</div>
+<span class="analytics-label">Time on Page</span>
+</div>
+<div class="analytics-card">
+<span class="analytics-icon">📁</span>
+<div class="analytics-number" id="repoStars">0</div>
+<span class="analytics-label">GitHub Stars</span>
+</div>
+<div class="analytics-card">
+<span class="analytics-icon">🔗</span>
+<div class="analytics-number" id="socialClicks">0</div>
+<span class="analytics-label">Social Clicks</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ DATA GAME ============ -->
+<section class="sec" id="game">
+<div class="wrap">
+<span class="ghost" aria-hidden="true">07</span>
+<div class="shead reveal">
+<span class="s-no">07</span>
+<span class="s-line"></span>
+<span class="s-tag">🎮 Interactive Game</span>
+</div>
+<h2 class="s-title reveal">Guess the Prediction<span class="adot">.</span></h2>
+
+<div class="game-container reveal">
+<div class="game-stats">
+<span>Score: <b id="gameScore">0</b></span>
+<span>Streak: <b id="gameStreak">0</b> 🔥</span>
+<span>Round: <b id="gameRound">1</b>/10</span>
+</div>
+
+<div class="game-scenario" id="gameScenario">
+<p>A telecom company wants to predict customer churn. Based on the data, what's the best approach?</p>
+</div>
+
+<div class="game-options" id="gameOptions">
+<button class="game-option" data-correct="false">Use a simple average</button>
+<button class="game-option" data-correct="false">Build a random forest classifier</button>
+<button class="game-option" data-correct="false">Use linear regression</button>
+<button class="game-option" data-correct="false">No model needed</button>
+</div>
+
+<div class="game-feedback" id="gameFeedback"></div>
+
+<button class="game-next" id="gameNext" style="display:none;">Next Question →</button>
+<button class="game-restart" id="gameRestart" style="display:none;">🔄 Play Again</button>
+</div>
+</div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contact">
+<div class="wrap">
+<div class="shead reveal"><span class="s-no">06</span><span class="s-line"></span><span class="s-tag" data-i18n="contact.tag">Contact</span></div>
+<h2 class="contact-title reveal"><span class="scr" data-text="Let's put your">Let's put your</span><br><span class="scr" data-text="data to work">data to work</span><span style="color:var(--dark)">.</span></h2>
+<p class="contact-sub reveal" style="--d:.1s" data-i18n="contact.sub">Open to data-science roles, analytics consulting and genuinely interesting problems. Based in Pretoria, South Africa — remote-friendly.</p>
+<div class="c-mail reveal" style="--d:.18s">
+<span class="ring" style="--ringr:99px;display:inline-block;border-radius:99px">
+<a href="mailto:lesibajmine@gmail.com">lesibajmine@gmail.com</a>
+</span>
+<button class="copy-btn mag" id="copyBtn" type="button" data-cursor="Copy">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+Copy
+</button>
+</div>
+<div class="c-grid reveal" style="--d:.26s">
+<a class="c-card" href="https://github.com/JmineSA" target="_blank" rel="noopener">
+<span class="c-top">
+<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+<svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+</span>
+<span class="c-label">GitHub</span><span class="c-val">github.com/JmineSA</span>
+</a>
+<a class="c-card" href="https://www.linkedin.com/in/lesiba-kganyago-a39b302b0" target="_blank" rel="noopener">
+<span class="c-top">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+<svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+</span>
+<span class="c-label">LinkedIn</span><span class="c-val">linkedin.com/in/lesiba-kganyago</span>
+</a>
+<a class="c-card" href="tel:+27728633144">
+<span class="c-top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05z"/></svg>
+<svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+</span>
+<span class="c-label">Phone</span><span class="c-val">+27 72 863 3144</span>
+</a>
+<div class="c-card">
+<span class="c-top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span></span>
+</span>
+<span class="c-label">Location</span><span class="c-val">Pretoria, ZA · <span class="js-clock">--:--:--</span> SAST</span>
+</div>
+<a class="c-card" href="assets/Lesiba_Kganyago_CV.pdf" download>
+<span class="c-top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+<svg class="c-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+</span>
+<span class="c-label">Résumé</span><span class="c-val">Download CV (PDF)</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap foot-in">
+<span>© 2025 Lesiba James Kganyago</span>
+<span>Built with <span style="color:var(--accent)">❤</span> · Space Grotesk · JetBrains Mono</span>
+<a href="#top">Back to top ↑</a>
+</div>
+</footer>
+
+<div class="toast" id="toast" role="status">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+<span id="toastMsg">Email copied to clipboard</span>
+</div>
+
+<script src="js/core/dom-helpers.js"></script>
+<script src="js/features/clock.js"></script>
+<script src="js/core/scroll-reveal.js"></script>
+<script src="js/core/interactions.js"></script>
+<script src="js/core/cursor.js"></script>
+<script src="js/features/terminal.js"></script>
+<script src="js/features/contact-copy.js"></script>
+<script src="js/features/figures.js"></script>
+<script src="js/features/background-canvas.js"></script>
+<script src="js/core/boot.js"></script>
+<script src="js/components/theme-toggle.js"></script>
+<script src="js/components/command-palette.js"></script>
+<script src="js/components/work-filters.js"></script>
+<script src="js/components/github-badges.js"></script>
+<script src="js/features/i18n.js"></script>
+<script src="js/features/github-activity.js"></script>
+<script src="js/features/analytics-dashboard.js"></script>
+<script src="js/features/chatbot.js"></script>
+<script src="js/features/music-player.js"></script>
+<script src="js/features/data-game.js"></script>
+<script src="js/features/particle-network.js"></script>
+<script src="js/components/back-to-top.js"></script>
+<script src="js/components/reading-progress.js"></script>
+<script src="js/components/scroll-animations.js"></script>
+<script src="js/components/case-study-details.js"></script>
+</body>
+</html>
