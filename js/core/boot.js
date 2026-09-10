@@ -9,7 +9,7 @@
     if (finished) return; finished = true;
     fill.style.width = '100%'; pct.textContent = '100%';
     loader.classList.add('done');
-    setTimeout(() => loader.remove(), 900);
+    setTimeout(() => loader.remove(), 1150);
     $$('.h-rev').forEach((el, i) => setTimeout(() => el.classList.add('in'), REDUCED ? 0 : 90 * i + 100));
     initReveals();
   }

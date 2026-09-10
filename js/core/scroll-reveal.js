@@ -4,6 +4,8 @@
 ============================================================ */
 const progress = $('#progress'), navEl = $('#nav'), heroIn = $('#heroIn');
 const tl = $('#timeline'), tlFill = $('#tlFill');
+// cinematic parallax layers: background moves slowest, foreground fastest
+const pxAurora = $('.aurora'), pxGrid = $('.gridlines'), pxNet = $('#net'), pxStars = $('#stars');
 let scrollQueued = false;
 function onScroll(){
   scrollQueued = false;
@@ -11,10 +13,16 @@ function onScroll(){
   progress.style.transform = `scaleX(${sy / Math.max(1, h.scrollHeight - h.clientHeight)})`;
   navEl.classList.toggle('sc', sy > 12);
   if (!REDUCED){
-    if (sy < 820){
+    if (sy < 900){
       heroIn.style.transform = `translateY(${sy * .16}px)`;
       heroIn.style.opacity = Math.max(0, 1 - sy / 720);
+      // hero depth layers — each moves at its own rate so the scene has depth
+      if (pxAurora) pxAurora.style.transform = `translateY(${sy * .05}px)`;
+      if (pxGrid)   pxGrid.style.transform   = `translateY(${sy * .09}px)`;
+      if (pxNet)    pxNet.style.transform    = `translateY(${sy * .13}px)`;
     }
+    // fixed starfield drifts slowly for the whole page, not just the hero
+    if (pxStars) pxStars.style.transform = `translateY(${sy * .04}px)`;
     if (tl){
       const r = tl.getBoundingClientRect();
       const passed = Math.min(r.height - 16, Math.max(0, innerHeight * .6 - r.top));
@@ -39,6 +47,27 @@ function initReveals(){
   initCharts();
   initCounts();
   initTerminal();
+  initChipStagger();
+  initFocusPull();
+}
+
+/* Cinematic touch: each .chip inside a .chips group cascades in one after
+   another (rather than all at once) once its parent .reveal element enters
+   view — pure CSS transition-delay driven by a per-child --i index. */
+function initChipStagger(){
+  $$('.chips').forEach(group => {
+    [...group.children].forEach((chip, i) => chip.style.setProperty('--i', i));
+  });
+}
+
+/* Cinematic touch: each figure panel (the live regression demo, histogram,
+   bar charts) starts soft and desaturated and racks into sharp focus as it
+   scrolls into view, like a camera focus-pull. */
+function initFocusPull(){
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in-focus'); io.unobserve(e.target); }
+  }), { threshold:.3 });
+  $$('.panel').forEach(el => io.observe(el));
 }
 const GLYPHS = '01<>/\\_+*#@$%&?!—';
 function scrambleEl(el){

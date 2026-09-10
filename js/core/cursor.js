@@ -1,168 +1,94 @@
+// Custom animated cursor: a round dot + ring that glides after the pointer,
+// picks up a soft comet trail while moving, gently snaps toward the center of
+// magnetic (.mag) buttons, spins a slow dashed HUD ring for a cinematic
+// touch, morphs into a labelled pill on flagged elements, and bursts a
+// ripple on click. Uses mix-blend-mode so one accent color reads clearly
+// against both light and dark backgrounds.
 /* ============================================================
-   CUSTOM CURSOR — Elegant Ring System
+   CUSTOM CURSOR — round dot + ring, cinematic edition
 ============================================================ */
-if (FINE && !REDUCED) {
+if (FINE && !REDUCED){
   document.documentElement.classList.add('cur');
-  
-  // Create cursor elements
-  const ring = document.createElement('div');
-  ring.id = 'cursorRing';
-  
-  const dot = document.createElement('div');
-  dot.id = 'cursorDot';
-  
-  const ringOuter = document.createElement('div');
-  ringOuter.id = 'cursorRingOuter';
-  
-  const label = document.createElement('div');
-  label.id = 'cursorLabel';
-  
-  document.body.appendChild(ringOuter);
-  document.body.appendChild(ring);
-  document.body.appendChild(dot);
-  document.body.appendChild(label);
-  
-  // State management
-  let x = innerWidth / 2, y = innerHeight / 2;
-  let dx = x, dy = y; // dot position (instant)
-  let rx = x, ry = y; // ring position (medium delay)
-  let ox = x, oy = y; // outer ring position (slow delay)
+  const dot = $('#curDot'), ring = $('#curRing'), label = $('#curLabel');
+  const trail1 = $('#curTrail1'), trail2 = $('#curTrail2');
+
+  let x = innerWidth / 2, y = innerHeight / 2;   // raw pointer position
+  let rx = x, ry = y;                            // ring position (lags + can be pulled magnetically)
+  let t1x = x, t1y = y, t2x = x, t2y = y;        // comet trail positions
   let seen = false;
-  let isDown = false;
-  
-  // Velocity tracking for dynamic effects
-  let lastX = x, lastY = y;
-  let velocity = 0;
-  
+  let magnet = null; // element currently exerting magnetic pull, if any
+
+  function showAll(v){
+    dot.style.opacity = ring.style.opacity = trail1.style.opacity = trail2.style.opacity = v;
+  }
+
   addEventListener('pointermove', e => {
-    x = e.clientX;
-    y = e.clientY;
-    
-    if (!seen) {
-      seen = true;
-      dx = x; dy = y;
-      rx = x; ry = y;
-      ox = x; oy = y;
-      ring.style.opacity = 1;
-      dot.style.opacity = 1;
-      ringOuter.style.opacity = 1;
-    }
-    
-    // Calculate velocity
-    const movement = Math.sqrt(Math.pow(x - lastX, 2) + Math.pow(y - lastY, 2));
-    velocity = movement * 0.1;
-    lastX = x;
-    lastY = y;
-    
-    // Dynamic ring scaling based on velocity
-    if (!isDown && !ring.classList.contains('hover') && !ring.classList.contains('text')) {
-      const speedScale = Math.min(velocity, 10);
-      const dynamicSize = 40 + speedScale * 2;
-      ring.style.width = dynamicSize + 'px';
-      ring.style.height = dynamicSize + 'px';
-      ring.style.margin = `-${dynamicSize / 2}px 0 0 -${dynamicSize / 2}px`;
-    }
-  }, { passive: true });
-  
+    x = e.clientX; y = e.clientY;
+    if (!seen){ seen = true; rx = x; ry = y; t1x = x; t1y = y; t2x = x; t2y = y; showAll(1); }
+  }, { passive:true });
+
   document.addEventListener('mouseleave', () => {
-    ring.style.opacity = 0;
-    dot.style.opacity = 0;
-    ringOuter.style.opacity = 0;
+    showAll(0);
     label.classList.remove('show');
     seen = false;
   });
-  
-  // Hover detection with specific states
+
   document.addEventListener('pointerover', e => {
-    const target = e.target;
-    const textInput = target.closest('input[type="text"], textarea, [contenteditable="true"], input[type="search"], input[type="email"], input[type="password"]');
-    const draggable = target.closest('[draggable="true"], .draggable, .drag-handle');
-    const interactive = target.closest('a, button, [role="button"], .clickable, select');
-    const labelElement = target.closest('[data-cursor]');
-    
-    // Reset all states
-    ring.classList.remove('hover', 'text', 'drag');
-    dot.classList.remove('hover', 'text');
-    ringOuter.classList.remove('hover');
-    
-    if (labelElement) {
-      label.textContent = labelElement.dataset.cursor;
+    const labelSrc = e.target.closest('[data-cursor]');
+    const big = e.target.closest('a,button,.chip,canvas,.c-card');
+    magnet = e.target.closest('.mag');
+
+    if (labelSrc){
+      label.textContent = labelSrc.dataset.cursor;
       label.classList.add('show');
-      return;
-    }
-    
-    label.classList.remove('show');
-    
-    if (textInput) {
-      ring.classList.add('text');
-      dot.classList.add('text');
-    } else if (draggable) {
-      ring.classList.add('drag');
-    } else if (interactive) {
-      ring.classList.add('hover');
-      dot.classList.add('hover');
-      ringOuter.classList.add('hover');
-    }
-  });
-  
-  // Click handling with ripple
-  addEventListener('pointerdown', e => {
-    isDown = true;
-    ring.classList.add('click');
-    dot.classList.add('click');
-    ringOuter.classList.add('click');
-    
-    // Create ripple effect
-    const ripple = document.createElement('div');
-    ripple.className = 'ring-ripple';
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top = e.clientY + 'px';
-    document.body.appendChild(ripple);
-    ripple.addEventListener('animationend', () => ripple.remove());
-  });
-  
-  addEventListener('pointerup', () => {
-    isDown = false;
-    ring.classList.remove('click');
-    dot.classList.remove('click');
-    ringOuter.classList.remove('click');
-  });
-  
-  // Smooth animation with different delays for each ring
-  (function animate() {
-    // Dot follows instantly (with minimal smoothing)
-    dx += (x - dx) * 0.85;
-    dy += (y - dy) * 0.85;
-    
-    // Main ring follows with medium delay
-    rx += (x - rx) * 0.25;
-    ry += (y - ry) * 0.25;
-    
-    // Outer ring follows slowly (creates depth)
-    ox += (x - ox) * 0.1;
-    oy += (y - oy) * 0.1;
-    
-    // Apply transforms
-    dot.style.transform = `translate(${dx}px, ${dy}px)`;
-    
-    // Apply rotation for drag state
-    if (ring.classList.contains('drag')) {
-      const angle = performance.now() * 0.05;
-      ring.style.transform = `translate(${rx}px, ${ry}px) rotate(${angle}deg)`;
+      ring.classList.add('label');
+      ring.classList.remove('big');
+      dot.style.opacity = 0;
     } else {
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      label.classList.remove('show');
+      ring.classList.remove('label');
+      ring.classList.toggle('big', !!big);
+      dot.style.opacity = 1;
     }
-    
-    ringOuter.style.transform = `translate(${ox}px, ${oy}px)`;
-    
-    // Position label with offset
-    label.style.transform = `translate(${x + 24}px, ${y + 24}px)`;
-    
-    requestAnimationFrame(animate);
+  });
+
+  addEventListener('pointerdown', e => {
+    ring.classList.add('down');
+    const r = document.createElement('span');
+    r.className = 'cur-ripple';
+    r.style.left = e.clientX + 'px';
+    r.style.top = e.clientY + 'px';
+    document.body.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+  addEventListener('pointerup', () => ring.classList.remove('down'));
+
+  // Dot tracks the real pointer directly (instant); the ring glides toward it
+  // with a light, snappy ease. When hovering a `.mag` element, the ring's
+  // target gently shifts toward that element's center for a magnetic "snap"
+  // feel. A short comet trail chases the ring for a cinematic sense of motion.
+  (function loop(){
+    let targetX = x, targetY = y;
+    if (magnet){
+      const r = magnet.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      targetX = x + (cx - x) * .55;
+      targetY = y + (cy - y) * .55;
+    }
+
+    rx += (targetX - rx) * .28;
+    ry += (targetY - ry) * .28;
+    t1x += (rx - t1x) * .35;
+    t1y += (ry - t1y) * .35;
+    t2x += (t1x - t2x) * .35;
+    t2y += (t1y - t2y) * .35;
+
+    dot.style.transform    = `translate(${x}px,${y}px) translate(-50%,-50%)`;
+    ring.style.transform   = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    trail1.style.transform = `translate(${t1x}px,${t1y}px) translate(-50%,-50%)`;
+    trail2.style.transform = `translate(${t2x}px,${t2y}px) translate(-50%,-50%)`;
+    label.style.transform  = `translate(${rx}px,${ry}px) translate(-50%,-50%) scale(${label.classList.contains('show') ? 1 : .6})`;
+
+    requestAnimationFrame(loop);
   })();
-  
-  // Reset velocity-based sizing when idle
-  setInterval(() => {
-    velocity *= 0.5;
-  }, 100);
 }

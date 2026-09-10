@@ -45,7 +45,7 @@ lesiba-portfolio/
 ├── assets/
 │   ├── Lesiba_Kganyago_CV.pdf
 │   ├── audio/deep-healing-ambient.mp3
-│   └── img/cursor-arrow-for-dark.webp, cursor-arrow-for-light.webp
+│   └── img/grain.png
 └── README.md
 ```
 
@@ -62,23 +62,24 @@ order if you add new files, and add new files *after* `js/core/dom-helpers.js`.
 
 | File | Contents |
 |---|---|
-| `index.html` | All page markup: nav, hero, "Selected Work" case studies, skills, contact, chatbot markup, music player markup. Loads every CSS file (in cascade order) and every JS file (in dependency order). |
+| `index.html` | All page markup: nav, hero, "Selected Work" case studies, skills, contact, chatbot markup, music player markup, cursor markup. Loads every CSS file (in cascade order) and every JS file (in dependency order). |
 | `.gitignore` | Ignores OS/editor cruft (`.DS_Store`, `.vscode/`, etc.) — nothing project-specific to ignore since there's no build output. |
 
 ### `css/base/` — foundational styles, loaded first
 
 | File | Contents |
 |---|---|
-| `tokens.css` | All design tokens as CSS custom properties on `:root`: colors (`--bg`, `--text`, `--accent`, etc.), fonts (`--sans`, `--mono`), radius, and a few chart-specific colors. Change the whole palette from here. |
-| `preloader.css` | The boot/loading screen shown before the page reveals itself. |
-| `cursor.css` | The custom arrow-glyph cursor: base size/position, the `.big` (hover) and `.down` (click) states, the light-mode color swap (`html[data-theme="light"]`), the hover label pill (`#curLabel`), and the click-ripple animation. |
+| `tokens.css` | All design tokens as CSS custom properties on `:root`: colors (`--bg`, `--text`, `--accent`, etc.), fonts (`--sans`, `--mono`), radius, a few chart-specific colors, and the base `.reveal`/`.h-rev`/chip-stagger entrance-animation rules. Change the whole palette from here. |
+| `preloader.css` | The boot/loading screen: spinner, progress bar, and the theatre-curtain reveal (two panels that sweep apart to unveil the page — see "Cinematic effects" below). |
+| `cursor.css` | The custom round dot + ring cursor: base sizes, the `.big` (hover), `.down` (click), and `.label` (pill mode) states, the slow-spinning dashed "HUD" ring accent, the two faint comet-trail dots, the hover label pill, and the click-ripple animation. |
+| `atmosphere.css` | The fixed vignette + animated film-grain overlay that sits above every section — see "Cinematic effects" below. |
 
 ### `css/layout/`
 
 | File | Contents |
 |---|---|
 | `nav.css` | Fixed starfield backdrop, top scroll-progress bar, the nav bar itself, and the side dots/HUD indicator. |
-| `hero.css` | The hero section: headline, role-cycler, hero stats, hero buttons. |
+| `hero.css` | The hero section: headline, role-cycler, hero stats, hero buttons, the depth layers used for scroll parallax (`.aurora`, `.gridlines`, `.net`), and the figure-panel focus-pull effect (`.panel` blur-to-sharp transition). |
 | `sections.css` | Shared "furniture" reused across every section below the hero: section headings, the project/case-study cards (`.case`, `.tilt`), tag chips, stat blocks. This is the largest layout file since most of the visual language lives here. |
 
 ### `css/components/`
@@ -112,10 +113,10 @@ can override anything above it.
 | File | Contents |
 |---|---|
 | `dom-helpers.js` | The `$`/`$$` query shortcuts, `REDUCED`/`FINE` feature-detection flags (reduced-motion and fine-pointer/mouse detection), and small utilities (`debounce`, `easeOutCubic`, `mulberry32` seeded RNG, `fitCanvas`, `visGate`). Every other file depends on this loading first. |
-| `scroll-reveal.js` | The top scroll-progress bar, "reveal on scroll" animations, the text-scramble effect on headings, and the `IntersectionObserver` that tracks which section is active for the side nav dots. |
-| `interactions.js` | Mobile hamburger menu, the hero role-cycler, spotlight hover glow on tiles, magnetic-pull buttons (`.mag`), and the 3D tilt effect on project cards (`.tilt`). |
-| `cursor.js` | The custom arrow cursor: tracks the pointer with a light, smooth glide (no rotation/scale jitter — kept intentionally light so it doesn't feel "heavy"), swaps into the `.big` state over links/buttons/cards, morphs into a labelled pill over anything with `data-cursor="..."`, and spawns a ripple on click. |
-| `boot.js` | Runs the preloader sequence once on page load, then reveals the page. |
+| `scroll-reveal.js` | The top scroll-progress bar, the scroll-linked parallax on the hero's depth layers, "reveal on scroll" animations, the chip-cascade stagger, the figure focus-pull observer, the text-scramble effect on headings, and the `IntersectionObserver` that tracks which section is active for the side nav dots. |
+| `interactions.js` | Mobile hamburger menu, the hero role-cycler, spotlight hover glow on tiles, magnetic-pull buttons (`.mag` — the button itself glides toward the pointer), and the 3D tilt effect on project cards (`.tilt`). |
+| `cursor.js` | The custom cursor — see "The cursor" below for the full behaviour rundown. |
+| `boot.js` | Runs the preloader sequence once on page load, then triggers the curtain reveal and shows the page. |
 
 ### `js/components/`
 
@@ -143,7 +144,7 @@ can override anything above it.
 | `github-activity.js` | Fetches and caches a live GitHub activity feed for display in the sidebar panel. |
 | `analytics-dashboard.js` | Drives the lightweight on-page analytics dashboard widget. |
 | `chatbot.js` | The embedded AI chatbot: canned Q&A about the projects/skills, suggestion chips, message rendering. |
-| `music-player.js` | **Rewritten.** Plays a single looping ambient track (`assets/audio/deep-healing-ambient.mp3`) starting at 10% volume. Tries to autoplay on page load with a smooth 1.8s volume fade-in; if the browser's autoplay policy blocks that (most desktop browsers block audio with sound until the visitor interacts with the page — this is a browser security rule, not something a website can override), it starts automatically on the visitor's very first click, keypress, or scroll instead, so it still "just works" without needing the play button. The floating pill's own play/pause button and volume slider still work as manual overrides at any time. |
+| `music-player.js` | Plays a single looping ambient track and autoplays it — see "The music" below. |
 | `data-game.js` | The interactive "guess the metric" data mini-game. |
 | `particle-network.js` | The subtle ambient particle-network background effect. |
 
@@ -152,30 +153,72 @@ can override anything above it.
 ## The music
 
 `assets/audio/deep-healing-ambient.mp3` is a **90-second, seamlessly-looping ambient
-pad** (soft layered tones + a gentle airy noise bed), generated specifically for this
-site so there's no licensing/attribution to worry about. It loops via the `loop`
-attribute on the `<audio>` tag, so it plays continuously without gaps.
+pad** (soft layered tones over a gentle airy noise bed), generated specifically for
+this site so there's no licensing/attribution to worry about. It loops via the `loop`
+attribute on the `<audio>` tag, so it repeats without a gap.
 
-- Default volume: **10%** (matches the slider default, saved to `localStorage` once changed).
-- Autoplay behaviour is described under `music-player.js` above.
+**Autoplay**, handled in `music-player.js`: every major browser blocks audio *with
+sound* from autoplaying until the visitor interacts with the page — that's a browser
+security rule no website can turn off. What browsers *do* always allow is **muted**
+autoplay. So the track starts muted the instant the page loads, and a moment later the
+script unmutes it and fades the volume in — browsers permit changing volume/mute on
+media that's already playing without requiring a fresh click, so in practice it plays
+audibly right away. If a browser is locked down enough to block even that, it falls
+back to starting on the visitor's very first click, keypress, or scroll instead.
+
+- Default volume: **10%** (the slider default; changing it is remembered via `localStorage`).
+- The floating pill's play/pause button and volume slider always work as manual overrides.
 
 To swap in a different track later: drop the new file in `assets/audio/` and update the
 `<source src="...">` in `index.html`'s `<audio id="bgMusic">` tag — no JS changes needed.
 
+## Cinematic effects
+
+Five effects work together to give the site a "produced" feel rather than a flat UI:
+
+- **Scroll parallax** — the hero's background layers (aurora glow, gridlines, neural-net
+  canvas) move at different speeds as you scroll past them, and the fixed starfield
+  drifts slowly across the whole page. Slower layers read as further away. Driven by
+  `onScroll()` in `scroll-reveal.js`; disabled under `prefers-reduced-motion`.
+- **Staggered/cascading reveals** — chips inside skill and project tag groups fade in
+  one after another rather than all at once, via `initChipStagger()` (a per-child `--i`
+  index) plus the matching CSS in `tokens.css`. The three project cards also carry a
+  slight stagger of their own.
+- **Focus-pull on data figures** — every figure panel (`.panel` — the live regression
+  demo, histogram, bar charts) starts blurred and desaturated, then racks into sharp
+  focus as it scrolls into view, like a camera pulling focus. Handled by
+  `initFocusPull()` in `scroll-reveal.js` + the `.panel`/`.panel.in-focus` rules in
+  `hero.css`.
+- **Film grain + vignette** — `css/base/atmosphere.css` layers a soft radial vignette
+  and a subtly animated grain texture (`assets/img/grain.png`) above every section.
+  Both are `pointer-events:none` so nothing underneath is ever blocked.
+- **Cinematic preloader** — instead of a plain fade, the preloader now finishes with
+  two curtain panels sweeping apart to reveal the page (`.loader-curtain` in
+  `preloader.css`, choreographed from `boot.js`).
+
+All five respect `prefers-reduced-motion` and degrade to instant/static states for
+visitors who have that setting on.
+
 ## The cursor
 
-`css/base/cursor.css` + `js/core/cursor.js` implement a custom arrow-glyph cursor built
-from your uploaded icon:
+`css/base/cursor.css` + `js/core/cursor.js` implement a cinematic round cursor:
 
-- Two colour variants ship in `assets/img/`: a light arrow for dark mode
-  (`cursor-arrow-for-dark.webp`) and a dark arrow for light mode
-  (`cursor-arrow-for-light.webp`). The CSS swaps between them automatically based on
-  the site's `data-theme` attribute, so it stays visible in both themes.
-- Movement is a light, direct glide toward the pointer — deliberately kept simple (no
-  rotation or scale-on-speed effects) so it tracks the mouse smoothly instead of
-  feeling heavy or laggy.
-- Hovering a link/button/card grows it slightly with a red glow; hovering anything
-  tagged `data-cursor="Some label"` in the HTML morphs it into a small labelled pill.
+- **Dot + ring**: the small dot tracks the pointer exactly; the larger ring glides
+  after it with a light, snappy ease (kept deliberately simple — no per-frame
+  rotation/scale math — so it tracks smoothly instead of feeling heavy or laggy).
+- **Comet trail**: two faint, shrinking dots chase the ring for a sense of motion.
+- **Magnetic snap**: hovering a `.mag` element (the same class used for the magnetic
+  buttons elsewhere on the site) gently pulls the ring toward that element's center,
+  so the button and the cursor both glide toward each other.
+- **Spinning HUD ring**: a thin dashed ring slowly rotates around the cursor at all
+  times — a pure-CSS animation, so it costs nothing extra per frame.
+- **Hover states**: links/buttons/cards enlarge the ring with a soft elastic
+  (overshoot) transition; anything tagged `data-cursor="Some label"` morphs the cursor
+  into a small labelled pill instead.
+- **Click**: a quick ring squeeze plus an expanding ripple burst.
+- **Theme-adaptive color**: uses `mix-blend-mode: difference`, so the same accent color
+  automatically reads clearly against both light and dark backgrounds — no separate
+  light/dark assets needed.
 - Automatically falls back to the native OS cursor on touch devices and whenever the
   visitor has `prefers-reduced-motion` enabled.
 
@@ -190,7 +233,13 @@ from your uploaded icon:
   bullet list, stats, and chips.
 - **Cursor hover labels**: add `data-cursor="Your label"` to any element to have the
   cursor morph into a labelled pill when hovering it.
+- **Cursor magnetism**: add the `.mag` class to any small interactive element to have
+  both the element and the cursor glide toward each other on hover.
 - **Background music**: see "The music" above.
+- **Cinematic effects**: dial grain/vignette strength in `atmosphere.css`
+  (`#cineGrain{opacity:...}`), parallax speed in `scroll-reveal.js`'s `onScroll()`
+  (the `sy * .05` / `.09` / `.13` factors), or the focus-pull blur amount in
+  `hero.css` (`.panel{filter:blur(9px)...}`).
 - **Swapping the generated charts for real screenshots**: drop images into `assets/`
   and replace the relevant `.panel` contents (`#olsCanvas`, `#histCanvas`,
   `#teleErrChart`, etc.) with `<img>` tags — the surrounding `.panel-head` /
@@ -213,4 +262,4 @@ from your uploaded icon:
 - Custom cursor only activates on fine-pointer (mouse) devices; touch devices get the
   native cursor and no hover-only interactions are required to use the site.
 - Background audio respects the browser's autoplay policy rather than fighting it (see
-  `music-player.js` above), and always leaves manual play/pause/volume controls available.
+  "The music" above), and always leaves manual play/pause/volume controls available.

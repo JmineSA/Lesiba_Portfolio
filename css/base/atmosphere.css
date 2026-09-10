@@ -1,0 +1,40 @@
+/* Cinematic atmosphere: a soft vignette + subtle animated film grain,
+   layered above every section so the whole page reads as "graded" footage
+   rather than flat UI. Both layers are pointer-events:none and sit below
+   the cursor/loader so they never block interaction. */
+/* ============================================================
+CINEMATIC ATMOSPHERE — vignette + film grain
+============================================================ */
+#cineVignette,#cineGrain{
+  position:fixed;inset:0;z-index:998;pointer-events:none;
+}
+
+#cineVignette{
+  background:radial-gradient(ellipse at 50% 42%, transparent 45%, rgba(0,0,0,.4) 100%);
+  mix-blend-mode:multiply;
+}
+html[data-theme="light"] #cineVignette{
+  background:radial-gradient(ellipse at 50% 42%, transparent 50%, rgba(0,0,0,.12) 100%);
+}
+
+#cineGrain{
+  background-image:url('../../assets/img/grain.png');
+  background-size:96px 96px;
+  opacity:.05;
+  mix-blend-mode:overlay;
+  animation:grainShift 1.1s steps(6) infinite;
+}
+
+@keyframes grainShift{
+  0%{transform:translate(0,0)}
+  16%{transform:translate(-4%,3%)}
+  33%{transform:translate(3%,-3%)}
+  50%{transform:translate(-3%,-4%)}
+  66%{transform:translate(4%,2%)}
+  83%{transform:translate(-2%,4%)}
+  100%{transform:translate(0,0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #cineGrain{animation:none}
+}

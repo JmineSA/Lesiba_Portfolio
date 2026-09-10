@@ -160,6 +160,9 @@ footer{border-top:1px solid var(--border);padding:26px 0}
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
 .js .reveal,.js .h-rev{transition:none;opacity:1;transform:none}
+.js .chips .chip{transition:none!important;opacity:1!important;transform:none!important}
+.js .panel{filter:none!important;transform:none!important}
+.loader-curtain,.loader-inner{transition:none!important}
 .aurora i,.loader,.marquee-track{animation:none!important}
 .ring::before{animation:none}
 .tilt{transform:none!important}

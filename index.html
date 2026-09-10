@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="css/base/tokens.css">
 <link rel="stylesheet" href="css/base/preloader.css">
 <link rel="stylesheet" href="css/base/cursor.css">
+<link rel="stylesheet" href="css/base/atmosphere.css">
 <link rel="stylesheet" href="css/layout/nav.css">
 <link rel="stylesheet" href="css/layout/hero.css">
 <link rel="stylesheet" href="css/layout/sections.css">
@@ -56,6 +57,8 @@
 
 <!-- preloader -->
 <div class="loader" id="loader" aria-hidden="true">
+<div class="loader-curtain l"></div>
+<div class="loader-curtain r"></div>
 <div class="loader-inner">
 <div class="loader-spinner">
 <svg viewBox="0 0 100 100" width="60" height="60">
@@ -75,11 +78,18 @@
 </div>
 
 <!-- custom cursor -->
-<div id="cursorArrow" aria-hidden="true"></div>
+<div id="curDot" aria-hidden="true"></div>
+<div id="curRing" aria-hidden="true"></div>
+<div id="curTrail1" aria-hidden="true"></div>
+<div id="curTrail2" aria-hidden="true"></div>
 <span id="curLabel" aria-hidden="true"></span>
 
 <!-- starfield -->
 <canvas id="stars" aria-hidden="true"></canvas>
+
+<!-- cinematic atmosphere: vignette + film grain overlay -->
+<div id="cineVignette" aria-hidden="true"></div>
+<div id="cineGrain" aria-hidden="true"></div>
 
 <!-- Particle Network Container -->
 <div id="particleContainer" style="position:fixed;inset:0;z-index:-1;pointer-events:none;"></div>
@@ -179,25 +189,35 @@
 </div>
 
 <!-- Music Player -->
-<div id="musicPlayer" class="music-player">
-<button id="musicToggle" class="music-toggle" aria-label="Toggle background music">
-<svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<path d="M9 18V5l12-2v13"/>
-<circle cx="6" cy="18" r="3"/>
-<circle cx="18" cy="16" r="3"/>
-</svg>
-<span class="music-label">Deep Healing</span>
-</button>
-<div class="music-controls">
-<input type="range" id="musicVolume" min="0" max="100" value="20" aria-label="Volume">
-<span class="music-volume-label">🔊</span>
-</div>
-<span class="now-playing">🎵 Deep Healing — Relaxing Ambient</span>
+<div id="musicPlayer" class="music-player" role="region" aria-label="Background music">
+  <button id="musicToggle" class="music-toggle" aria-label="Toggle background music" aria-pressed="false">
+    <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <span class="music-label" id="musicLabel">Deep Healing</span>
+  </button>
+
+  <div class="music-controls">
+    <input type="range" id="musicVolume" min="0" max="100" value="10" aria-label="Volume">
+    <span class="music-volume-label" aria-hidden="true">🔊</span>
+  </div>
+
+  <div class="music-visualizer" id="musicVisualizer" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <span class="now-playing" id="nowPlaying">🎵 Deep Healing — Relaxing Ambient</span>
 </div>
 
-<audio id="bgMusic" loop preload="auto">
-<source src="assets/audio/deep-healing-ambient.mp3" type="audio/mpeg">
+<audio id="bgMusicA" loop preload="auto" muted playsinline>
+  <source src="assets/audio/deep-healing-ambient.mp3" type="audio/mpeg">
 </audio>
+
+<!-- Screen reader announcements -->
+<div id="musicAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
 <!-- Back to Top -->
 <button id="backToTop" class="back-top" aria-label="Back to top">
@@ -387,7 +407,7 @@
 <div class="filter-bar reveal" id="workFilterBar" aria-label="Filter projects by technology"></div>
 
 <!-- P.01 — Telecom -->
-<article class="case tilt reveal" data-tags="Forecasting, Gradient Boosting, Telecom, Streamlit">
+<article class="case tilt reveal" style="--d:0s" data-tags="Forecasting, Gradient Boosting, Telecom, Streamlit">
 <div class="case-top"><span class="case-idx">P.01</span><span class="case-tags">Gradient Boosting · Telecom · Streamlit · Forecasting</span></div>
 <h3>Mobile Data Consumption Intelligence System
 <a class="repo-link" data-cursor="View repo" data-repo="JmineSA/telecom-consumption-intelligence" href="https://github.com/JmineSA/telecom-consumption-intelligence" target="_blank" rel="noopener">
@@ -456,7 +476,7 @@ Live Demo →
 </article>
 
 <!-- P.02 — UbuntuCare -->
-<article class="case tilt flip reveal" data-tags="Regression, XGBoost, Healthcare, Cost modelling">
+<article class="case tilt flip reveal" style="--d:.08s" data-tags="Regression, XGBoost, Healthcare, Cost modelling">
 <div class="case-top"><span class="case-idx">P.02</span><span class="case-tags">XGBoost · Regression · Healthcare · Cost modelling</span></div>
 <h3>UbuntuCare — Wait-Time Prediction System
 <a class="repo-link" data-cursor="View repo" data-repo="JmineSA/UbuntuCare-QueueOptimizer" href="https://github.com/JmineSA/UbuntuCare-QueueOptimizer" target="_blank" rel="noopener">
@@ -516,7 +536,7 @@ Live Demo →
 </article>
 
 <!-- P.03 — Fraud -->
-<article class="case tilt reveal" data-tags="Classification, Real-time, Risk segmentation">
+<article class="case tilt reveal" style="--d:.08s" data-tags="Classification, Real-time, Risk segmentation">
 <div class="case-top"><span class="case-idx">P.03</span><span class="case-tags">Classification · Real-time · Risk segmentation</span></div>
 <h3>Intelligent Fraud Detection in Banking
 <a class="repo-link" data-cursor="View repo" data-repo="JmineSA/Financial-Fraud-Modeling-for-LOL-Bank" href="https://github.com/JmineSA/Financial-Fraud-Modeling-for-LOL-Bank" target="_blank" rel="noopener">
