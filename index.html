@@ -408,72 +408,237 @@
 
 <!-- P.01 — Telecom -->
 <article class="case tilt reveal" style="--d:0s" data-tags="Forecasting, Gradient Boosting, Telecom, Streamlit">
-<div class="case-top"><span class="case-idx">P.01</span><span class="case-tags">Gradient Boosting · Telecom · Streamlit · Forecasting</span></div>
-<h3>Mobile Data Consumption Intelligence System
-<a class="repo-link" data-cursor="View repo" data-repo="JmineSA/telecom-consumption-intelligence" href="https://github.com/JmineSA/telecom-consumption-intelligence" target="_blank" rel="noopener">
-View repo
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
-</a>
-<a class="demo-link" href="#" onclick="alert('Live demo coming soon! 🚀'); return false;">
-Live Demo →
-</a>
-</h3>
-<p class="case-sum" data-i18n="work.telecom.summary">Simulated telecom analytics engagement — decoding data consumption, customer behaviour, revenue opportunity and network demand.</p>
-<details class="case-study-details">
-<summary data-i18n="work.read_case">📊 Read the full case study</summary>
-<div class="case-study-content">
-<h4>Methodology</h4>
-<p>We processed 100,000+ customer records using PySpark and Databricks, applying feature engineering to extract consumption patterns, device preferences, and network usage trends. The Gradient Boosting model achieved 92% accuracy in predicting high-value customers.</p>
-<h4>Key Results</h4>
-<ul>
-<li>Identified 573 revenue drivers with average ARPU of R596</li>
-<li>Quantified R32.8K revenue upside from under-predicted usage</li>
-<li>Revealed +255.7% error spike during network congestion</li>
-</ul>
-<h4>Business Impact</h4>
-<p>The insights led to targeted bundle offers, dynamic pricing adjustments, and network capacity planning that reduced congestion by 23%.</p>
-</div>
-</details>
-<div class="case-cols">
-<div class="case-text">
-<ul>
-<li data-i18n="work.telecom.p1">End-to-end analytics solution spanning mobile data consumption, customer behaviour, revenue opportunities and network demand.</li>
-<li data-i18n="work.telecom.p2">Quantified <b>R32.8K</b> in revenue upside from under-predicted data usage and <b>R44.9K</b> in network over-allocation costs from over-predicted demand.</li>
-<li data-i18n="work.telecom.p3">Showed forecasting error spikes <b>+255.7%</b> under congestion — the business case for <b>congestion-aware demand forecasting</b>.</li>
-<li data-i18n="work.telecom.p4">Segmented customers across service usage, subscription plans, devices and network types to target bundles, upselling and plan optimisation.</li>
-<li data-i18n="work.telecom.p5">Built an interactive <b>Streamlit dashboard</b> uniting customer, revenue, network and predictive views.</li>
-</ul>
-<div class="mini-stats">
-<div class="mini-stat"><span class="n"><span data-count="573">0</span></span><span class="l" data-i18n="work.telecom.stat1">high-value revenue drivers identified</span></div>
-<div class="mini-stat"><span class="n">R<span data-count="596">0</span></span><span class="l" data-i18n="work.telecom.stat2">average ARPU in the high-value segment</span></div>
-<div class="mini-stat"><span class="n"><span data-count="8.4" data-decimals="1">0</span> GB</span><span class="l" data-i18n="work.telecom.stat3">average data consumption per driver</span></div>
-</div>
-<div class="chips">
-<span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">Gradient Boosting</span><span class="chip">Streamlit</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Plotly</span><span class="chip">Joblib</span>
-</div>
-</div>
-<div class="case-figs">
-<div class="panel">
-<div class="panel-head"><span>FIG. 02 — Forecast error under congestion</span><span>Error multiplier</span></div>
-<div class="bar-chart" id="teleErrChart">
-<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:33.333%">1.2</i><i style="left:66.667%">2.4</i><i style="left:100%" class="end">3.6×</i></div><span></span></div>
-<div class="bc-row"><span class="bc-label">Uncongested network</span><div class="bc-track"><div class="bc-bar gain" style="--w:27.78%;--dd:.05s"></div></div><span class="bc-val"><span data-count="1.0" data-decimals="1">0</span>×</span></div>
-<div class="bc-row"><span class="bc-label">Congested network</span><div class="bc-track"><div class="bc-bar cost" style="--w:98.8%;--dd:.22s"></div></div><span class="bc-val"><span data-count="3.56" data-decimals="2">0</span>×</span></div>
-</div>
-<div class="panel-foot"><span>Error ↑ <b>+255.7%</b> when the network congests</span><span>P.01</span></div>
-</div>
-<div class="panel">
-<div class="panel-head"><span>FIG. 03 — Revenue upside vs over-allocation</span><span>ZAR</span></div>
-<div class="bar-chart" id="teleMoneyChart">
-<div class="bc-axis"><span></span><div class="ax"><i style="left:0%">0</i><i style="left:33.408%">R15K</i><i style="left:66.815%">R30K</i><i style="left:100%" class="end">R44.9K</i></div><span></span></div>
-<div class="bc-row"><span class="bc-label">Under-predicted usage upside</span><div class="bc-track"><div class="bc-bar gain" style="--w:73.05%;--dd:.05s"></div></div><span class="bc-val">R<span data-count="32.8" data-decimals="1">0</span>K</span></div>
-<div class="bc-row"><span class="bc-label">Over-allocation cost</span><div class="bc-track"><div class="bc-bar cost" style="--w:100%;--dd:.22s"></div></div><span class="bc-val">R<span data-count="44.9" data-decimals="1">0</span>K</span></div>
-</div>
-<div class="panel-foot"><span>Congestion-aware forecasting closes both gaps</span><span>P.01</span></div>
-</div>
-</div>
-</div>
+  <div class="case-top">
+    <span class="case-idx">P.01</span>
+    <span class="case-tags">Gradient Boosting · Telecom · Forecasting</span>
+  </div>
+
+  <h3>
+    Mobile Data Consumption Intelligence System
+    <a class="repo-link"
+       data-cursor="View repo"
+       data-repo="JmineSA/telecom-consumption-intelligence"
+       href="https://github.com/JmineSA/telecom-consumption-intelligence"
+       target="_blank" rel="noopener">
+      View repo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17 17 7M8 7h9v9"/>
+      </svg>
+    </a>
+    <a class="demo-link"
+       href="https://telecom-consumption-intelligence-7u9fclgabrv8tttvf2jpsx.streamlit.app/"
+       target="_blank" rel="noopener">
+      Live Dashboard →
+    </a>
+  </h3>
+
+  <p class="case-sum" data-i18n="work.telecom.summary">
+    Simulated telecom analytics project exploring mobile data consumption,
+    forecasting performance, customer behaviour and potential business impact.
+  </p>
+
+  <details class="case-study-details">
+    <summary data-i18n="work.read_case">📊 Read the full case study</summary>
+    <div class="case-study-content">
+      <h4>Methodology</h4>
+      <p>
+        Developed a mobile data consumption forecasting workflow using
+        historical consumption patterns and engineered features. Evaluated
+        a Gradient Boosting model on held-out test data and analysed
+        prediction errors to understand underprediction, overprediction
+        and differences across network conditions.
+      </p>
+
+      <h4>Model Evaluation</h4>
+      <ul>
+        <li>Test-set R²: 0.77</li>
+        <li>Mean Absolute Error (MAE): 2.021 GB</li>
+        <li>Root Mean Squared Error (RMSE): 3.379 GB</li>
+      </ul>
+
+      <h4>Key Findings</h4>
+      <ul>
+        <li>
+          54,539 test observations (57.9%) were underpredicted.
+        </li>
+        <li>
+          39,664 test observations (42.1%) were overpredicted.
+        </li>
+        <li>
+          Forecast errors were higher during network congestion,
+          highlighting the need to evaluate forecasts across operating conditions.
+        </li>
+      </ul>
+
+      <h4>Business Implications</h4>
+      <p>
+        Estimated the potential financial implications of forecast errors
+        under the project's assumptions, highlighting opportunities to
+        investigate unmet data demand and improve network resource allocation.
+        These estimates are not realised revenue or verified savings.
+      </p>
+
+      <p>
+        <strong>Data note:</strong> This is a portfolio project using
+        simulated telecom data, not production data from a real operator.
+      </p>
+    </div>
+  </details>
+
+  <div class="case-cols">
+    <div class="case-text">
+      <ul>
+        <li data-i18n="work.telecom.p1">
+          Developed an end-to-end analytics solution for mobile data
+          consumption forecasting, customer behaviour and network demand.
+        </li>
+
+        <li data-i18n="work.telecom.p2">
+          Estimated <b>R7.34 million in potential top-up revenue opportunity</b>
+          associated with underpredicted usage and
+          <b>R7.12 million in potential network over-allocation costs</b>
+          associated with overpredicted demand.
+        </li>
+
+        <li data-i18n="work.telecom.p3">
+          Evaluated forecast performance on held-out test data, achieving
+          <b>R² = 0.77</b>, with an MAE of <b>2.021 GB</b> and an RMSE of
+          <b>3.379 GB</b>.
+        </li>
+
+        <li data-i18n="work.telecom.p4">
+          Analysed consumption patterns and forecast errors across network
+          conditions to inform demand forecasting and network planning.
+        </li>
+
+        <li data-i18n="work.telecom.p5">
+          Built an interactive <b>Streamlit dashboard</b> to communicate
+          forecasting performance and potential business implications.
+        </li>
+      </ul>
+
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <span class="n">R² <span data-count="0.77" data-decimals="2">0</span></span>
+          <span class="l">held-out test-set score</span>
+        </div>
+
+        <div class="mini-stat">
+          <span class="n"><span data-count="2.021" data-decimals="3">0</span> GB</span>
+          <span class="l">mean absolute error</span>
+        </div>
+
+        <div class="mini-stat">
+          <span class="n"><span data-count="3.379" data-decimals="3">0</span> GB</span>
+          <span class="l">root mean squared error</span>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Scikit-learn</span>
+        <span class="chip">Gradient Boosting</span>
+        <span class="chip">Streamlit</span>
+        <span class="chip">Plotly</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">Seaborn</span>
+        <span class="chip">Joblib</span>
+      </div>
+    </div>
+
+    <div class="case-figs">
+      <div class="panel">
+        <div class="panel-head">
+          <span>FIG. 02 — Forecast direction</span>
+          <span>Test observations</span>
+        </div>
+
+        <div class="bar-chart" id="teleErrChart">
+          <div class="bc-axis">
+            <span></span>
+            <div class="ax">
+              <i style="left:0%">0%</i>
+              <i style="left:50%">50%</i>
+              <i style="left:100%" class="end">100%</i>
+            </div>
+            <span></span>
+          </div>
+
+          <div class="bc-row">
+            <span class="bc-label">Underpredicted</span>
+            <div class="bc-track">
+              <div class="bc-bar gain" style="--w:57.9%;--dd:.05s"></div>
+            </div>
+            <span class="bc-val">57.9%</span>
+          </div>
+
+          <div class="bc-row">
+            <span class="bc-label">Overpredicted</span>
+            <div class="bc-track">
+              <div class="bc-bar cost" style="--w:42.1%;--dd:.22s"></div>
+            </div>
+            <span class="bc-val">42.1%</span>
+          </div>
+        </div>
+
+        <div class="panel-foot">
+          <span>94,203 observations in the held-out test set</span>
+          <span>P.01</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <span>FIG. 03 — Estimated financial implications</span>
+          <span>ZAR</span>
+        </div>
+
+        <div class="bar-chart" id="teleMoneyChart">
+          <div class="bc-axis">
+            <span></span>
+            <div class="ax">
+              <i style="left:0%">R0</i>
+              <i style="left:33.333%">R2.67M</i>
+              <i style="left:66.667%">R5.33M</i>
+              <i style="left:100%" class="end">R8M</i>
+            </div>
+            <span></span>
+          </div>
+
+          <div class="bc-row">
+            <span class="bc-label">Potential top-up opportunity</span>
+            <div class="bc-track">
+              <div class="bc-bar gain" style="--w:91.8%;--dd:.05s"></div>
+            </div>
+            <span class="bc-val">R7.34M</span>
+          </div>
+
+          <div class="bc-row">
+            <span class="bc-label">Potential over-allocation cost</span>
+            <div class="bc-track">
+              <div class="bc-bar cost" style="--w:89.0%;--dd:.22s"></div>
+            </div>
+            <span class="bc-val">R7.12M</span>
+          </div>
+        </div>
+
+        <div class="panel-foot">
+          <span>Model-based estimates; not realised financial outcomes</span>
+          <span>P.01</span>
+        </div>
+      </div>
+
+      <p class="case-sum">
+        All financial figures are illustrative estimates based on simulated
+        data and project-specific assumptions.
+      </p>
+    </div>
+  </div>
 </article>
+
 
 <!-- P.02 — UbuntuCare -->
 <article class="case tilt flip reveal" style="--d:.08s" data-tags="Regression, XGBoost, Healthcare, Cost modelling">
@@ -543,8 +708,8 @@ Live Demo →
 View repo
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
 </a>
-<a class="demo-link" href="#" onclick="alert('Live demo coming soon! 🚀'); return false;">
-Live Demo →
+<a class="demo-link" href="https://huggingface.co/spaces/jmine/FraudGuard_AI" target="_blank" rel="noopener">
+Live Dashboard →
 </a>
 </h3>
 <p class="case-sum" data-i18n="work.fraud.summary">A real-time fraud screen that cuts false positives without letting more fraud through.</p>
